@@ -2,20 +2,20 @@ nginxtools
 ==========
 Fancy tool for autmagically managing NGINX virtual host configuration files.  Usage is as follows:
 
-nginxtools **[verb]** **[option]**...
+nginxtools **[verb]** **[option]...**
 
-Verbs
+##Verbs##
 -----
 * **create** Ask nginxtools to automatically create a new site configuration.
-* **remove* Removing an existing site configuration.
+* **remove** Removing an existing site configuration.
 * list (not yet implemented)
 
-Options
+##Options##
 -------
 * **nogit** For use with the *create* verb; will NOT set up a git repository if included.
 * **skiplogs** For use with the *remove* verb; will skip removal of log files if included.
 
-Example Usage
+##Example Usage##
 -------------
 Create a shiny new site using a standard configuration.
 
@@ -29,6 +29,6 @@ Done with your site, but would like to review server logs?
 
     nginxtools remove catsinhats.com skiplogs
 
-Thanks
+##Thanks##
 ------
-Well, gee, thanks for using my script!  Also thanks to trevorriles for brainstorming this thing with me.
+Well, gee, thanks for using my script!  Also thanks to <a href="https://github.com/trevorriles">trevorriles</a> for brainstorming this thing with me.
