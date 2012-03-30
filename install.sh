@@ -4,7 +4,7 @@ echo ""
 echo ""
 
 echo "Beginning install..."
-wget https://raw.github.com/bendemaree/nginxtools/master/scripts/nginxtools.sh >/dev/null
+wget -quiet https://raw.github.com/bendemaree/nginxtools/master/scripts/nginxtools.sh >/dev/null
 echo ""
 
 echo "Moving scripts into place..."
@@ -20,5 +20,4 @@ command -v nginxtool >/dev/null || {
 }
 
 echo "Installation complete!  You are now able to use nginxtool."
-rm install.sh
 exit 0
