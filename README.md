@@ -23,11 +23,12 @@ First, please go grab scripts/nginxtools.sh from this repository.  Then run the 
     sudo mv nginxtools.sh /usr/local/bin/nginxtool
     sudo chmod +x /usr/local/bin/nginxtool
 
+###Done###
 After completing either method you should be able to run nginxtool like any other command.
 
 ##Usage##
 
-nginxtools **[verb]** *sitename.com* **[option]...**
+nginxtool **[verb]** *sitename.com* **[option]...**
 
 ##Verbs##
 * **create** Ask nginxtools to automatically create a new site configuration. Use in conjunction with the nogit option
