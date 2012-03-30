@@ -1,12 +1,15 @@
 #!/bin/bash
 
-if [[ $EUID -ne "0" ]]
+echo ""
+echo ""
+
+if [ $EUID -ne "0" ]
 then
         echo "You are not running as root.  You will be prompted for your password."
 fi
 
 echo "Beginning install..."
-wget https://raw.github.com/bendemaree/nginxtools/master/scripts/nginxtools.sh
+wget https://raw.github.com/bendemaree/nginxtools/master/scripts/nginxtools.sh >/dev/null
 echo ""
 
 echo "Moving scripts into place..."
