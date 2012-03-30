@@ -1,15 +1,5 @@
 #!/bin/bash
 
-while true;
-do
-        echo "You are about to install nginxtools.  Continue? [Y/n] " yn
-        case $yn in
-                [Yy]*   ) break;;
-                [Nn]*   ) exit 1;;
-                *       ) "Entry not recognized.  Please enter Y or n.";;
-        esac
-done
-
 if [[ $EUID -ne "0" ]]
 then
         echo "You are not running as root.  You will be prompted for your password."
