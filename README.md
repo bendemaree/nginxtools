@@ -11,6 +11,20 @@ The tool does not encompass NGINX's entire configuration featureset.  However, t
 * Treat sites as whole objects that you can activate and deactivate
 * Cleanly remove a site and all its files, with the option of retaining log files
 
+##Installation##
+Installation is super-duper easy.  There are also two ways to do it...how 'bout that?
+
+###Automated Install###
+    wget https://raw.github.com/bendemaree/nginxtools/master/install.sh -O - | sh
+ZOMG was that easy or what?!
+
+###Manual Install###
+First, please go grab scripts/nginxtools.sh from this repository.  Then run the following commands:
+    sudo mv nginxtools.sh /usr/local/bin/nginxtool
+    sudo chmod +x /usr/local/bin/nginxtool
+
+After completing either method you should be able to run nginxtool like any other command.
+
 ##Usage##
 
 nginxtools **[verb]** *sitename.com* **[option]...**
@@ -29,20 +43,20 @@ nginxtools **[verb]** *sitename.com* **[option]...**
 ##Example Usage##
 Create a shiny new site using a standard configuration.
 
-    nginxtools create catsaregreat.com
+    nginxtool create catsaregreat.com
 
 Hate git?  Of course not.  Don't want a repository created for you?  No problem.
 
-    nginxtools create seriouslycatsrule.com nogit
+    nginxtool create seriouslycatsrule.com nogit
 
 Need to modify site visibility?
     
-    nginxtools disable lookatmycat.com
-    nginxtools enable cativersity.edu
+    nginxtool disable lookatmycat.com
+    nginxtool enable cativersity.edu
 
 Done with your site, but would like to review server logs?
 
-    nginxtools remove catsinhats.com skiplogs
+    nginxtool remove catsinhats.com skiplogs
 
 ##Thanks##
 Well, gee, thanks for using my script!  Also thanks to <a href="https://github.com/trevorriles">trevorriles</a> for brainstorming this thing with me.
