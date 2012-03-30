@@ -49,6 +49,8 @@ init ()
         create      ) create "$@";;
         remove      ) remove "$@";;
         list        ) list "$@";;
+        enable      ) enable "$@";;
+        disable     ) disable "$@";;
     esac
 }
 
@@ -175,6 +177,76 @@ remove () {
 
     echo "Reloading NGINX..."
     kill -HUP `cat /var/run/nginx.pid` 
+}
+
+list () {
+    ALLSITES=`ls -1 "$CONF_ROOT"sites-available`
+    ACTIVESITES=`ls -1 "$CONF_ROOT"sites-enabled`
+    echo -e "All configured sites:\n"
+    for site in $ALLSITES
+    do
+        # Ignore default configuration.
+        if [[ ! $site =~ ^default$ ]]
+        then
+            echo ${site%\.conf}
+        fi
+    done
+    echo -e "\nAll enabled sites:\n"
+    for site in $ACTIVESITES
+    do
+        # Ignore default configuration.
+        if [[ ! $site =~ ^default$ ]]
+        then
+            echo ${site%\.conf}
+        fi
+    done
+}
+
+enable () {
+    SITE=$2
+    if [ ! -f $CONF_ROOT"sites-available/"$SITE".conf" ]
+    then
+        echo "Sorry, that site doesn't exist. I can't enable it."
+        exit 1
+    fi
+    if [ -f $CONF_ROOT"sites-enabled/"$SITE".conf" ]
+    then
+        echo "That site is already enabled!"
+        exit 1
+    fi
+    
+    # Site exists but is not enabled.
+    echo "Activating $SITE..."
+    sudo ln -s $CONF_ROOT"sites-available/"$SITE".conf" $CONF_ROOT"sites-enabled/"$SITE".conf"
+    
+    echo "Reloading NGINX..."
+    kill -HUP `cat /var/run/nginx.pid` 
+    
+    exit 0
+}
+
+disable () {
+    SITE=$2
+    if [ ! -f $CONF_ROOT"sites-available/"$SITE".conf" ]
+    then
+        echo "Sorry, that site doesn't exist. I can't disable it."
+        exit 1
+    fi
+    if [ ! -f $CONF_ROOT"sites-enabled/"$SITE".conf" ]
+    then
+        echo "That site is already disabled!"
+        exit 1
+    fi
+
+    # Site exists but is enabled.
+    echo "Deactivating $SITE..."
+    sudo rm $CONF_ROOT"sites-enabled/"$SITE".conf"
+    
+    echo "Reloading NGINX..."
+    kill -HUP `cat /var/run/nginx.pid` 
+
+    
+    exit 0
 }
 
 init "$@"
