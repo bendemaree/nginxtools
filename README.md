@@ -4,6 +4,7 @@ Fancy tool for automagically managing NGINX virtual host configuration files.  T
 
 ##Features##
 The tool does not encompass NGINX's entire configuration featureset.  However, the tool is also very easy to use.  It also generates completely legible configuration files, so if you'd like to modify them with more complex settings, that should be business as usual.  Here are a few things it can do for you, however:
+
 * Create a new site content folder and initialize it as a git repository
 * Auto-generate virtual host configuration files
 * Set up logging to custom log directories
